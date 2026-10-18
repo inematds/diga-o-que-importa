@@ -9,3 +9,8 @@
 - Vídeo: roteiro novo (3035 chars), 9 imagens novas, visual v2 OK (42 shots). HeyGen a8d20e074f664f55b2dbec61b282898d (baixar2.log).
 - Reel: edição renomeada para edicoes/2026-10-18-diga-importa-gestor (título antigo colidia no estúdio); fazer rodando, avatar enviado.
 - Antigos descartados: v1-descartado/, visual-descartado/, media-v1/, guia-v1/, reel7etapas/_descartado-diga-v1.
+
+## 18/10 ~03:20 — versão 1 (antiga)
+- Página v1: artifact privado https://claude.ai/artifact/AQ1nkMATVoNTSV5Pp6bpR5 (link no v3 msg 1541).
+- 16:9 v1 (output/explica-diga-v1, 2min40): v3 msg 1542; a pedido do Nei publicado no lives7 dJBK9BDy8NI (thumb = capa do vídeo; a do Codex tinha robô cartoon); inemaytbot msg 2328.
+- r7e v1 (reel7etapas/edicoes/2026-10-18-diga-v1-antigo): v3 msg 1545. Não publicado.
