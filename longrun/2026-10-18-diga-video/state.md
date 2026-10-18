@@ -14,3 +14,10 @@
 - Página v1: artifact privado https://claude.ai/artifact/AQ1nkMATVoNTSV5Pp6bpR5 (link no v3 msg 1541).
 - 16:9 v1 (output/explica-diga-v1, 2min40): v3 msg 1542; a pedido do Nei publicado no lives7 dJBK9BDy8NI (thumb = capa do vídeo; a do Codex tinha robô cartoon); inemaytbot msg 2328.
 - r7e v1 (reel7etapas/edicoes/2026-10-18-diga-v1-antigo): v3 msg 1545. Não publicado.
+
+## 18/10 ~18:30 — publicado (pedido do Nei: v1+v2 no lives1, v2 no lives4, portal, INEMA.NCIA)
+- lives1: v1 16:9 2jt_aP0wpPQ · v2 16:9 nUSIuuwwpYk · v2 reel _ybdWtprQJU. lives4: v2 16:9 c4X1AQr7c04 · v2 reel J-ohqu_8V7o. (v1 também no lives7 dJBK9BDy8NI.)
+- Bot v3: v2 16:9 720p msg 1619, reel v2 msg 1620. inemaytbot msg 2372 (links).
+- Release video-v1.0.0 (v2 16:9, reel, v1) + src/videos.json, push 38ca08c.
+- Portal 75756f0 (projeto + 3 vídeos no quadro + videos.ts), inemabuscas 3a2d8a5, inemapro 0fc3e45.
+- Telegram INEMA.NCIA tópico https://t.me/c/2414677686/1109 (v1+v2 num post), MENU msg 1129.
