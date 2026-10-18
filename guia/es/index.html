@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Di lo que importa — cómo trabajar bien con agentes de IA</title>
+<meta name="description" content="Quien se comunica mejor obtiene más de los agentes de IA. Seis ideas, un guion de entrevista y un diccionario del proyecto para que el agente entregue lo que querías. Gratis.">
+<link rel="alternate" hreflang="pt-BR" href="https://inematds.github.io/diga-o-que-importa/guia/"><link rel="alternate" hreflang="en" href="https://inematds.github.io/diga-o-que-importa/guia/en/"><link rel="alternate" hreflang="es" href="https://inematds.github.io/diga-o-que-importa/guia/es/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0c0c10; --bg2:#14141b; --card:#16161e; --line:#272730;
+    --txt:#e9e9ee; --mut:#9a9aa6; --amb:#FACC15; --amb2:#f0c070; --sky:#38bdf8; --pro:#cbd5e1;
+    color-scheme:dark;
+  }
+  body.light{
+    --bg:#f6f7f9; --bg2:#eceef2; --card:#ffffff; --line:#e1e3ea;
+    --txt:#1a1a22; --mut:#5b5b68; --amb:#a16207; --amb2:#a16207; --sky:#0369a1; --pro:#b45309;
+    color-scheme:light;
+  }
+  body.light .hero .glow{opacity:.5}
+  body.light pre{background:#0e0e14;color:#d6d6e0}
+  body.light pre .c{color:#8a8a98}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--txt);font:16px/1.65 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:Sora,sans-serif;line-height:1.15;margin:0}
+  a{color:var(--amb);text-decoration:none}
+  code,pre{font-family:"JetBrains Mono",monospace}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 22px}
+  .mut{color:var(--mut)} .amb{color:var(--amb)}
+  .chip{display:inline-block;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--amb);font-weight:600;font-family:Sora}
+  nav{position:sticky;top:0;z-index:30;backdrop-filter:blur(12px);background:rgba(12,12,16,.78);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;gap:22px;height:60px}
+  nav .brand{display:flex;align-items:center;gap:8px;font-family:Sora;font-weight:800;letter-spacing:-.02em;color:var(--amb)}
+  nav .brand .emoji{font-size:1.25rem}
+  nav .sep{color:var(--mut);opacity:.45}
+  nav .inema{color:var(--sky);font-weight:600;font-size:.88rem;font-family:Sora}
+  nav .inema:hover{filter:brightness(1.15)}
+  nav .pro{color:var(--pro);font-weight:600;font-size:.88rem;font-family:Sora}
+  nav .pro:hover{filter:brightness(1.15)}
+  nav .clubpro{display:inline-flex;align-items:center;gap:6px}
+  nav .links{margin-left:auto;display:flex;align-items:center;gap:20px;font-size:.92rem}
+  nav .links a.sec{color:var(--mut)} nav .links a.sec:hover{color:var(--txt)}
+  .lang{display:inline-flex;gap:2px;font-family:Sora;font-size:.78rem}
+  .lang a{color:var(--mut);padding:.2em .45em;border-radius:6px} .lang a.on{color:var(--amb);background:rgba(250,204,21,.12)}
+  .tgl{background:var(--bg2);border:1px solid var(--line);color:var(--txt);width:38px;height:38px;border-radius:10px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;font-size:1.05rem}
+  .tgl:hover{border-color:var(--amb)}
+  .btn{display:inline-block;background:var(--amb);color:#1a1206;font-weight:600;padding:.6em 1.05em;border-radius:10px;font-family:Sora}
+  .btn.ghost{background:transparent;color:var(--txt);border:1px solid var(--line)}
+  @media(max-width:760px){nav .links a.sec{display:none}}
+  @media(max-width:520px){nav .wrap{gap:8px;padding:8px 14px;height:auto;flex-wrap:wrap} nav .links{gap:8px;margin-left:0;width:100%;justify-content:space-between} nav .btn{padding:.45em .7em;font-size:.82rem} .tgl{width:34px;height:34px}}
+  .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+  .hero .glow{position:absolute;inset:-40% -20% auto auto;width:70%;height:600px;background:radial-gradient(closest-side,rgba(250,204,21,.22),transparent 70%);pointer-events:none}
+  .hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:74px 22px}
+  .hero h1{font-size:clamp(2.2rem,5vw,3.5rem);font-weight:800;letter-spacing:-.025em}
+  .hero p.lead{font-size:1.18rem;color:var(--mut);margin:1.1em 0 1.6em;max-width:34ch}
+  .hero .cta{display:flex;gap:12px;flex-wrap:wrap}
+  .hero figure{margin:0;border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 80px -30px #000}
+  .hero figure img{width:100%;display:block}
+  .resumo{padding:38px 0 34px;border-bottom:1px solid var(--line)}
+  .resumo p{font-size:1.12rem;line-height:1.7;max-width:74ch;margin:.55em 0 0}
+  @media(max-width:780px){.hero .wrap{grid-template-columns:1fr;padding:48px 22px}}
+  section{padding:62px 0;border-bottom:1px solid var(--line)}
+  section h2{font-size:clamp(1.5rem,3.4vw,2.1rem);font-weight:800;letter-spacing:-.02em}
+  section .sub{color:var(--mut);margin:.6em 0 2em;max-width:62ch}
+  .grid{display:grid;gap:16px}
+  .g3{grid-template-columns:repeat(3,1fr)} .g4{grid-template-columns:repeat(4,1fr)} .g2{grid-template-columns:repeat(2,1fr)}
+  @media(max-width:820px){.g3,.g4{grid-template-columns:1fr 1fr}}
+  @media(max-width:540px){.g2,.g3,.g4{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
+  .card h3{font-size:1.05rem;margin-bottom:.4em}
+  .card p{color:var(--mut);font-size:.92rem;margin:0}
+  .num{display:inline-flex;width:30px;height:30px;align-items:center;justify-content:center;border-radius:8px;background:rgba(250,204,21,.14);color:var(--amb);font-family:Sora;font-weight:800;font-size:.9rem;margin-bottom:.7em}
+  .flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:10px}
+  .flow span{background:var(--bg2);border:1px solid var(--line);border-radius:999px;padding:.45em .9em;font-size:.85rem;font-family:Sora;font-weight:600}
+  .flow .arr{color:var(--amb);border:none;background:none;padding:0 .1em}
+  pre{background:#0a0a0e;border:1px solid var(--line);border-radius:12px;padding:16px 18px;overflow:auto;font-size:.86rem;line-height:1.6;color:#d6d6e0}
+  pre .c{color:#6f6f7c} pre .k{color:var(--amb2)} pre .s{color:#9ece6a}
+  .step{display:grid;grid-template-columns:46px minmax(0,1fr);gap:16px;margin-bottom:26px}
+  .step>div,.card{min-width:0}
+  p code,li code,td code{overflow-wrap:anywhere}
+  .step .b{width:46px;height:46px;border-radius:12px;background:var(--amb);color:#1a1206;font-family:Sora;font-weight:800;font-size:1.25rem;display:flex;align-items:center;justify-content:center}
+  .step h3{font-size:1.12rem;margin-bottom:.3em}
+  .step p{color:var(--mut);margin:.2em 0 .7em}
+  .ex{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media(max-width:680px){.ex{grid-template-columns:1fr}}
+  .ex figure{margin:0;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+  .ex figure img{width:100%;display:block}
+  .ex figcaption{padding:12px 14px;font-size:.88rem;color:var(--mut);background:var(--card)}
+  .phase{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--line)}
+  .phase:last-child{border:none}
+  .phase .tag{flex:0 0 92px;font-family:Sora;font-weight:800;color:var(--amb)}
+  .phase .d strong{display:block;margin-bottom:.2em}
+  .phase .d span{color:var(--mut);font-size:.92rem}
+  footer{padding:46px 0;text-align:center;color:var(--mut);font-size:.9rem}
+  .pill{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:.3em .8em;font-size:.78rem;color:var(--mut);margin:0 4px}
+</style>
+
+<style>
+  .ideia{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center;padding:34px 0;border-top:1px solid var(--line)}
+  .ideia:first-of-type{border-top:none}
+  .ideia:nth-child(even) figure{order:2}
+  @media(max-width:820px){.ideia{grid-template-columns:1fr}.ideia:nth-child(even) figure{order:0}}
+  .ideia figure,.ill{margin:0;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+  .ideia figure img,.ill img{width:100%;display:block;aspect-ratio:16/9;object-fit:cover}
+  .ideia h3{font-size:1.35rem;margin:.3em 0 .5em} .ideia p{color:var(--mut);margin:.2em 0 .8em}
+  .rot{font-family:Sora;font-weight:800;color:var(--amb);font-size:.95rem;letter-spacing:.08em}
+  .tip{border-left:3px solid var(--amb);background:rgba(250,204,21,.08);padding:12px 16px;border-radius:0 10px 10px 0;margin:14px 0 0;color:var(--txt)}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:22px} @media(max-width:820px){.two{grid-template-columns:1fr}}
+  .box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;min-width:0}
+  .box h3{font-size:1.05rem;margin-bottom:.4em} .box p{color:var(--mut);margin:.2em 0 .8em}
+  .box pre{white-space:pre-wrap;overflow-wrap:anywhere;margin:0}
+  .copy{margin-top:12px;font-size:.85rem;padding:.45em .9em}
+  .ladder{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin-top:22px}
+  .steps{display:flex;align-items:flex-end;gap:10px}
+  .steps .d{flex:1;min-width:0;border:2px solid var(--amb);border-radius:10px;padding:12px;opacity:0;animation:up .5s ease-out forwards}
+  .steps .d b{display:block;font-family:Sora;font-weight:800;font-size:1.5rem;color:var(--amb)}
+  .steps .d span{font-size:.92rem;line-height:1.3}
+  @media(max-width:700px){.steps{flex-direction:column;align-items:stretch}.steps .d{min-height:0!important;margin-left:calc(var(--i)*14px)}}
+  @keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  @media(prefers-reduced-motion:reduce){.steps .d{animation:none;opacity:1}}
+  .vids{display:grid;grid-template-columns:2fr 1fr;gap:20px;align-items:start} @media(max-width:820px){.vids{grid-template-columns:1fr}}
+  .vids video{width:100%;border-radius:14px;border:1px solid var(--line);background:#000;display:block}
+  .vids .v916 video{max-width:360px;margin:0 auto}
+  .vids h3{font-size:1rem;margin:0 0 .6em} .vids p{margin:.6em 0 0;font-size:.88rem}
+  ul.check{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  @media(max-width:700px){ul.check{grid-template-columns:1fr}}
+  ul.check li{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px 14px 46px;position:relative}
+  ul.check li::before{content:"";position:absolute;left:16px;top:16px;width:18px;height:18px;border:2px solid var(--amb);border-radius:5px}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="brand" href="./"><span class="emoji">🗣️</span> Di lo que importa</a>
+  <span class="sep">|</span>
+  <span class="clubpro">
+    <a class="inema" href="https://inema.club" target="_blank" rel="noopener">INEMA.CLUB</a>
+    <span class="sep">-</span>
+    <a class="pro" href="https://inema.pro" target="_blank" rel="noopener">PRO</a>
+  </span>
+  <div class="links">
+    <a class="sec" href="#tese">La idea</a><a class="sec" href="#ideias">6 ideas</a><a class="sec" href="#kit">Kit</a><a class="sec" href="#cola">Lista</a>
+    <span class="lang"><a href="../">PT</a><a href="../en/">EN</a><a class="on" href="../es/">ES</a></span>
+    <button class="tgl" id="themeToggle" aria-label="Cambiar tema" title="Cambiar tema">🌙</button>
+    <a class="btn" href="https://github.com/inematds/diga-o-que-importa" target="_blank" rel="noopener">GitHub</a>
+  </div>
+</div></nav>
+
+<header class="hero" id="top">
+  <div class="glow"></div>
+  <div class="wrap">
+    <div>
+      <span class="chip">Agentes de IA · sin saber programar</span>
+      <h1>Di lo que <span class="amb">importa</span></h1>
+      <p class="lead">El agente más inteligente del mundo todavía no puede leerte la mente. Quien se comunica mejor obtiene más de él.</p>
+      <div class="cta"><a class="btn" href="#ideias">Ver las 6 ideas</a><a class="btn ghost" href="https://github.com/inematds/diga-o-que-importa" target="_blank" rel="noopener">Ver en GitHub</a></div>
+    </div>
+    <figure><img src="../assets/banner-es.jpg" alt="Banner: Di lo que importa: quien se comunica mejor obtiene más de los agentes de IA"></figure>
+  </div>
+</header>
+<section id="resumo" class="resumo"><div class="wrap"><span class="chip">En resumen</span><p>Esta es una guía gratis sobre cómo trabajar bien con agentes de IA, los asistentes que escriben, programan y organizan tareas por ti. La idea central es sencilla: el agente no sabe lo que quieres hasta que se lo dices, y quien se comunica mejor obtiene mejores resultados. Aquí encontrarás seis ideas prácticas, un guion listo para que el agente te entreviste antes de empezar, un modelo de diccionario del proyecto y una lista de verificación. Sirve tanto para quienes programan como para quienes no. Solo tienes que leerla y ponerla en práctica en tu próximo pedido.</p></div></section>
+<section id="tese"><div class="wrap">
+  <span class="chip">La idea</span><h2>El cuello de botella no es el modelo. Es la conversación.</h2><p class="sub">Los modelos mejoran cada mes, pero la distancia entre lo que piensas y lo que dices sigue ahí. En esa distancia es donde el agente inventa.</p>
+  <figure style="margin:0 0 26px;border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 80px -30px #000"><img src="../assets/banner-grade-es.jpg" alt="Banner en cuadrícula con las 6 ideas: la barrera, el entorno, la entrevista, un solo idioma, una buena base y la escalera de confianza" loading="lazy" style="width:100%;display:block"></figure>
+  <div class="grid g3"><div class="card"><h3>🗣️ Comunicarse es la habilidad</h3><p>Quien escribe con claridad, explica por qué y describe bien qué salió mal obtiene resultados mucho mejores.</p></div><div class="card"><h3>🏠 El entorno manda</h3><p>Un agente en un proyecto desordenado produce desorden. En un proyecto bien cuidado, hace un buen trabajo.</p></div><div class="card"><h3>🪜 La confianza se construye</h3><p>Empieza con el freno: observa, dale tareas fáciles de revisar y solo después dale más libertad.</p></div></div>
+</div></section>
+<section id="ideias"><div class="wrap">
+  <span class="chip">6 ideas</span><h2>Seis ideas para que el agente entregue lo que querías</h2><p class="sub">Cada idea incluye el porqué, una ilustración y algo que puedes hacer hoy mismo.</p>
+  <article class="ideia" id="barreira">
+  <figure><img src="../assets/02-barreira.jpg" alt="Un hombre y un robot separados por un vidrio: en la mente del hombre hay una casa completa; en la del robot, una casa torcida" loading="lazy"></figure>
+  <div><span class="rot">01 · LA BARRERA</span><h3>El agente no puede leerte la mente</h3>
+  <p>Entre tú y el agente hay una barrera de comunicación. No importa lo inteligente que sea el modelo: no sabe qué valoras, cuáles son tus reglas ni por qué quieres eso.</p><p>Lo que no le dices, lo completa por su cuenta. A veces acierta. Muchas veces inventa. Y como no lo mencionaste, concluye que no era importante.</p>
+  <p class="tip"><strong>Hazlo hoy:</strong> En tu próximo pedido, escribe una línea sobre lo que importa y otra sobre por qué. Ejemplo: "Tiene que ser rápido en el celular, porque mis clientes se conectan con 4G."</p></div>
+</article><article class="ideia" id="ambiente">
+  <figure><img src="../assets/03-ambiente.jpg" alt="El mismo robot en dos talleres: en el desordenado arma algo torcido; en el ordenado, algo perfecto" loading="lazy"></figure>
+  <div><span class="rot">02 · EL ENTORNO</span><h3>Casa desordenada, trabajo desordenado</h3>
+  <p>El agente trabaja dentro de tu proyecto. Si el proyecto es un desorden que nadie cuida, entra basura y sale basura. Si está organizado, con pruebas y verificaciones, acierta más.</p><p>Piénsalo así: si tuvieras cien personas trabajando para ti, ¿cómo harías para que la peor de ellas trabajara bien? Con reglas claras, pruebas que detecten errores y un espacio ordenado. Eso mejora el nivel mínimo. Con el agente pasa lo mismo.</p>
+  <p class="tip"><strong>Hazlo hoy:</strong> Elige algo para ordenar en tu proyecto: un archivo de instrucciones para el agente, una prueba que detecte el error más común o una carpeta bien organizada.</p></div>
+</article><article class="ideia" id="entrevista">
+  <figure><img src="../assets/04-entrevista.jpg" alt="Un robot con una tabla entrevista al hombre en una mesa de reuniones" loading="lazy"></figure>
+  <div><span class="rot">03 · LA ENTREVISTA</span><h3>Deja que el agente te entreviste</h3>
+  <p>El mayor peligro es lo que ni siquiera sabes que desconoces: la seguridad, cómo se publica el sistema, quién lo usará y qué pasa cuando algo sale mal. Si no lo dices, el agente decide por ti.</p><p>La solución es invertir la conversación. Antes de construir, pídele al agente que te entreviste, una pregunta a la vez, hasta que no queden dudas. Así sacas todo de tu cabeza y él deja de adivinar. El guion listo está en el kit, más abajo.</p>
+  <p class="tip"><strong>Hazlo hoy:</strong> Pega el guion de entrevista del kit antes de tu próximo proyecto y responde todo, incluso lo que parezca obvio.</p></div>
+</article><article class="ideia" id="lingua">
+  <figure><img src="../assets/05-lingua.jpg" alt="El cliente, el hombre, el robot, el monitor y el celular sostienen la misma caja de pedido, unidos por una cinta" loading="lazy"></figure>
+  <div><span class="rot">04 · UN SOLO IDIOMA</span><h3>La misma palabra en todas partes</h3>
+  <p>Si el cliente dice "pedido", tú dices "pedido", el agente escribe "pedido" en el código y la pantalla muestra "pedido", todos hablan de lo mismo. Cuando cada quien usa un nombre (pedido, orden, compra, venta), aparece la confusión.</p><p>Crea un pequeño diccionario del proyecto: cada término, qué significa y qué NO es. Dáselo al agente y actualízalo cada vez que aparezca una palabra nueva. Un pensamiento claro se convierte en un producto claro.</p>
+  <p class="tip"><strong>Hazlo hoy:</strong> Escribe las cinco palabras más importantes de tu proyecto y una frase para explicar cada una. Usa el modelo del kit.</p></div>
+</article><article class="ideia" id="base">
+  <figure><img src="../assets/06-base.jpg" alt="Una enorme pila de documentos cae sobre una maqueta rota, junto a otra maqueta modular bien ensamblada" loading="lazy"></figure>
+  <div><span class="rot">05 · UNA BUENA BASE</span><h3>Un documento enorme no salva un proyecto malo</h3>
+  <p>Hay quienes intentan reemplazar el código por una especificación enorme y terminan ocupándose solo del documento. Lo que suele pasar es que el código empeora poco a poco, y el agente también, porque trabaja dentro del código, no del documento.</p><p>Un buen proyecto permite cambiar una cosa sin romper otra. También ayuda mucho que el agente pueda abrir el sistema, hacer clic, tomar una captura y ver el resultado con sus propios ojos, en vez de imaginarlo.</p>
+  <p class="tip"><strong>Hazlo hoy:</strong> Pregúntale al agente: "¿Qué hace que sea difícil realizar cambios en este proyecto?" y resuelve el primer punto de la lista.</p></div>
+</article><article class="ideia" id="escada">
+  <figure><img src="../assets/07-escada.jpg" alt="Un hombre y un robot suben una escalera de cinco peldaños, con un pedal de freno en el primero" loading="lazy"></figure>
+  <div><span class="rot">06 · LA ESCALERA</span><h3>Primero el freno, después el acelerador</h3>
+  <p>Cuando aprendes a manejar, el primer pedal es el freno. Con un agente pasa lo mismo: no confíes a ciegas la primera vez que algo funciona. Esa desconfianza es buena.</p><p>Empieza observando todo lo que hace. Dale tareas tediosas y fáciles de revisar: redactar respuestas, organizar listas, revisar textos. Cuando tengas confianza, sube un peldaño: dos agentes al mismo tiempo, habilidades propias, conexión con el correo y la agenda.</p>
+  <p class="tip"><strong>Hazlo hoy:</strong> Anota tres tareas tediosas de tu semana que puedas revisar en dos minutos. Empieza por ellas.</p></div>
+</article>
+  <div class="box" style="margin-top:20px"><div class="two" style="align-items:center">
+    <figure class="ill"><img src="../assets/08-piso.jpg" alt="Un robot trabaja en una plataforma con una red de seguridad debajo mientras el hombre toma café" loading="lazy"></figure>
+    <div><span class="chip">Bono</span><h3 style="font-size:1.25rem;margin:.3em 0">Un nivel mínimo alto requiere menos esfuerzo</h3><p>Cuando el entorno es bueno y las pruebas detectan lo que se escapa, no necesitas activar el máximo esfuerzo del modelo. El esfuerzo medio basta, cuesta menos y responde más rápido. Antes de correr tras el modelo más nuevo, mejora el lugar donde trabaja el agente: ahí está la mayor ganancia.</p></div>
+  </div></div>
+</div></section>
+<section id="kit"><div class="wrap">
+  <span class="chip">Kit</span><h2>Copia y úsalo</h2><p class="sub">Dos textos listos para pegar en el agente y una escalera para medir en qué punto estás.</p>
+  <div class="two">
+    <div class="box"><h3>Guion: el agente te entrevista</h3><p>Pégalo antes de pedir algo nuevo. Funciona con cualquier agente.</p><pre id="p-entrevista">Antes de empezar, entrevístame sobre lo que quiero construir.
+Haz UNA pregunta a la vez y espera mi respuesta.
+Pregunta para quién es, qué debe hacer, qué NO puede pasar,
+la seguridad y los datos, cómo se publicará y cómo sabremos si quedó bien.
+Si no lo sé, dame opciones con sus ventajas y desventajas, y recomienda una.
+No pares hasta que no queden dudas. Al final, resume todo en una lista
+y pídeme que confirme antes de escribir cualquier cosa.</pre>
+      <button class="btn copy" data-alvo="p-entrevista">Copiar</button></div>
+    <div class="box"><h3>Modelo: diccionario del proyecto</h3><p>Guárdalo en un archivo del proyecto (por ejemplo, DICCIONARIO.md) y pídele al agente que lo siga.</p><pre id="p-dic"># Diccionario del proyecto
+Usa siempre estas palabras en el código, la pantalla y la conversación.
+
+## Pedido
+Qué es: la compra que el cliente confirmó, con los artículos y la dirección.
+Qué NO es: el carrito (todavía no está confirmado).
+
+## Cliente
+Qué es: la persona que compra.
+Qué NO es: quien usa el panel (a esa persona la llamamos "asistente").</pre>
+      <button class="btn copy" data-alvo="p-dic">Copiar</button></div>
+  </div>
+  <div class="ladder"><h3 style="margin:0 0 10px">La escalera de confianza</h3><div class="steps"><div class="d" style="--i:0;min-height:110px;animation-delay:0.0s;background:rgba(250,204,21,0.06)"><b>1</b><span>Observar todo lo que hace</span></div><div class="d" style="--i:1;min-height:155px;animation-delay:0.3s;background:rgba(250,204,21,0.12)"><b>2</b><span>Tareas tediosas y fáciles de revisar</span></div><div class="d" style="--i:2;min-height:200px;animation-delay:0.6s;background:rgba(250,204,21,0.18)"><b>3</b><span>Dos agentes al mismo tiempo</span></div><div class="d" style="--i:3;min-height:245px;animation-delay:0.9s;background:rgba(250,204,21,0.24)"><b>4</b><span>Habilidades propias</span></div><div class="d" style="--i:4;min-height:290px;animation-delay:1.2s;background:rgba(250,204,21,0.30)"><b>5</b><span>Conexiones: correo, agenda, hojas de cálculo</span></div></div></div>
+</div></section>
+
+<section id="cola"><div class="wrap">
+  <span class="chip">La oportunidad</span><h2>Dónde está la oportunidad</h2>
+  <div class="two" style="align-items:center;margin-bottom:40px">
+    <figure class="ill"><img src="../assets/09-oportunidade.jpg" alt="Un hombre presenta un flujo de trabajo a tres empresarios mientras el robot ejecuta los pasos" loading="lazy"></figure>
+    <p style="color:var(--txt);font-size:1.05rem">La programación fue el primer trabajo en cambiar porque es fácil revisar el código. El trabajo diario es más difícil: cada empresa hace las cosas a su manera. Por eso, la gran oportunidad consiste en tomar los procesos de trabajo, convertirlos en pasos que un agente pueda seguir y llevarlos a las empresas. Quien se comunica bien llega primero.</p>
+  </div>
+  <span class="chip">Lista</span><h2>Antes del próximo pedido</h2><p class="sub">Seis preguntas rápidas. Si la respuesta es no, ya sabes qué hacer.</p>
+  <ul class="check"><li>¿Dije qué importa y por qué?</li><li>¿El proyecto está lo bastante ordenado para que el agente trabaje bien?</li><li>¿Dejé que el agente me entrevistara antes de empezar?</li><li>¿Todos usan las mismas palabras para referirse a las mismas cosas?</li><li>¿El agente puede ver el resultado en funcionamiento?</li><li>¿Estoy en el peldaño correcto de la escalera de confianza?</li></ul>
+  <p class="tip" style="margin-top:22px"><strong>Los modelos van a mejorar. Pero nunca podrán leerte la mente.</strong></p>
+</div></section>
+
+<footer>
+  <div class="wrap">
+    <div class="pill">Agentes de IA</div><div class="pill">Comunicación</div><div class="pill">Gratis</div>
+    <p style="margin-top:18px">Di lo que importa · guía abierta y gratuita · <a href="https://github.com/inematds/diga-o-que-importa">inematds/diga-o-que-importa</a> · <a href="https://inema.club">INEMA.CLUB</a></p>
+  </div>
+</footer>
+<script>
+  (function(){
+    var KEY='diga-o-que-importa-theme', b=document.body, t=document.getElementById('themeToggle');
+    try{ if(localStorage.getItem(KEY)==='light'){ b.classList.add('light'); t.textContent='☀️'; } }catch(e){}
+    t.addEventListener('click',function(){ var light=b.classList.toggle('light'); t.textContent=light?'☀️':'🌙'; try{ localStorage.setItem(KEY, light?'light':'dark'); }catch(e){} });
+    document.querySelectorAll('.copy').forEach(function(bt){
+      bt.addEventListener('click',function(){
+        var txt=document.getElementById(bt.dataset.alvo).innerText;
+        (navigator.clipboard?navigator.clipboard.writeText(txt):Promise.reject()).then(function(){ var o=bt.textContent; bt.textContent='Copiado ✓'; setTimeout(function(){bt.textContent=o;},1600); }).catch(function(){});
+      });
+    });
+  })();
+</script>
+</body>
+</html>
