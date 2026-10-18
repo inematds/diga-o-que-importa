@@ -6,11 +6,11 @@
 
 ## What it is
 
-This is a free guide to working well with AI agents, the assistants that write, code, and organize tasks for you. The main idea is simple: an agent doesn’t know what you want until you tell it, and people who communicate better get better results. Here you’ll find six practical ideas, a ready-to-use script for having the agent interview you before it starts, a project dictionary template, and a checklist. It’s for people who code and people who don’t. Just read it and apply it to your next request.
+This is a free guide for anyone who wants to put AI agents to work in a company. The central idea: the manager already knows the processes, customers, suppliers, and team—that is the hardest part—and only needs to learn how to pass that knowledge to the agent. That is what the 5-4-3 rule is for: five questions, four levels of autonomy, and three test cases. The guide also shows how an IT professional's role changes, from builder to mentor, auditor, trainer, and consultant. It includes ready-to-copy templates and requires no programming.
 
 ## 📖 Guide
 
-Full guide (landing + 6 ideas + kit): **https://inematds.github.io/diga-o-que-importa/guia/en/**
+Full guide (manager, 5-4-3 rule, tech and kit): **https://inematds.github.io/diga-o-que-importa/guia/en/**
 
 ## What is here
 

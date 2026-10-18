@@ -6,11 +6,11 @@
 
 ## O que é
 
-Este é um guia grátis sobre como trabalhar bem com agentes de IA, os assistentes que escrevem, programam e organizam tarefas por você. A ideia central é simples: o agente não sabe o que você quer até você dizer, e quem se comunica melhor recebe resultados melhores. Aqui você encontra seis ideias práticas, um roteiro pronto para o agente te entrevistar antes de começar, um modelo de dicionário do projeto e um checklist. Serve para quem programa e para quem não programa. É só ler e aplicar no próximo pedido.
+Este é um guia grátis para quem quer colocar agentes de IA para trabalhar numa empresa. A ideia central: o gestor já conhece os processos, os clientes, os fornecedores e a equipe, que é a parte mais difícil, e só precisa aprender a passar isso ao agente. Para isso existe a regra 5-4-3: cinco perguntas, quatro níveis de autonomia e três casos de teste. O guia também mostra como o técnico de TI muda de papel, de quem constrói para mentor, auditor, treinador e consultor. Tem modelos prontos para copiar e não precisa programar.
 
 ## 📖 Guia de uso
 
-Guia completo (landing + 6 ideias + kit): **https://inematds.github.io/diga-o-que-importa/guia/**
+Guia completo (gestor, regra 5-4-3, técnico e kit): **https://inematds.github.io/diga-o-que-importa/guia/**
 
 ## O que tem aqui
 

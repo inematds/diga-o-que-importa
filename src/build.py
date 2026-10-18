@@ -44,18 +44,28 @@ EXTRA_CSS = """<style>
   @media(max-width:700px){ul.check{grid-template-columns:1fr}}
   ul.check li{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px 14px 46px;position:relative}
   ul.check li::before{content:"";position:absolute;left:16px;top:16px;width:18px;height:18px;border:2px solid var(--amb);border-radius:5px}
+  .ill{margin:0;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+  .big{font-family:Sora;font-weight:800;color:var(--amb);font-size:1.1rem;letter-spacing:.06em;text-transform:uppercase;display:flex;align-items:baseline;gap:10px}
+  .big span{font-size:3.4rem;line-height:1}
+  ul.lista{margin:.4em 0 0;padding-left:1.2em} ul.lista li{margin:.35em 0}
+  .minis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px} @media(max-width:820px){.minis{grid-template-columns:1fr 1fr}}
+  .mini{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:4px}
+  .mini .ic{font-size:1.4rem} .mini span:last-child{color:var(--mut);font-size:.9rem}
+  .papeis{display:grid;grid-template-columns:1fr 1fr;gap:12px} @media(max-width:600px){.papeis{grid-template-columns:1fr}}
+  .papel h3{font-size:1.02rem} .papel p{font-size:.92rem} .papel .usa{color:var(--amb);font-size:.85rem;margin-top:.4em}
+  ol.passos{list-style:none;counter-reset:p;padding:0;margin:0;display:grid;gap:12px}
+  ol.passos li{counter-increment:p;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px 12px 54px;position:relative;display:flex;flex-direction:column;gap:3px}
+  ol.passos li::before{content:counter(p);position:absolute;left:14px;top:12px;width:28px;height:28px;border-radius:50%;background:var(--amb);color:#1a1206;font:800 .95rem/28px Sora;text-align:center}
+  ol.passos li span{color:var(--mut);font-size:.92rem}
+  .modelos{display:grid;grid-template-columns:1fr 1fr;gap:18px} @media(max-width:820px){.modelos{grid-template-columns:1fr}}
+  .grid.g4{grid-template-columns:repeat(4,1fr)} @media(max-width:900px){.grid.g4{grid-template-columns:1fr 1fr}} @media(max-width:540px){.grid.g4{grid-template-columns:1fr}}
+  a.card.link{color:var(--txt)} a.card.link:hover{border-color:var(--amb)}
+  table.cola{width:100%;border-collapse:collapse} table.cola td{padding:12px;border-bottom:1px solid var(--line)} table.cola td:first-child{font-family:Sora;font-weight:800;color:var(--amb);white-space:nowrap}
 </style>"""
 
 
 def esc(s):
     return html.escape(s, quote=False)
-
-
-def escada(passos):
-    """Degraus em HTML que sobem da esquerda para a direita, um por vez."""
-    return '<div class="steps">' + "".join(
-        f'<div class="d" style="--i:{i};min-height:{110 + i * 45}px;animation-delay:{i * .3:.1f}s;background:rgba(250,204,21,{.06 + i * .06:.2f})"><b>{i + 1}</b><span>{esc(t)}</span></div>'
-        for i, t in enumerate(passos)) + "</div>"
 
 
 def construir(lang, videos):
@@ -65,19 +75,25 @@ def construir(lang, videos):
     up = "" if lang == "pt" else "../"
     sfx = "" if lang == "pt" else f"-{lang}"
     nav = d["nav"]
-    secoes = [("tese", nav["tese"]), ("ideias", nav["ideias"]), ("kit", nav["kit"])] + ([("video", nav["video"])] if videos else []) + [("cola", nav["cola"])]
+    secoes = [("gestor", nav["gestor"]), ("regra", nav["regra"]), ("tecnico", nav["tecnico"]), ("kit", nav["kit"])] + ([("video", nav["video"])] if videos else [])
     links = "".join(f'<a class="sec" href="#{a}">{esc(t)}</a>' for a, t in secoes)
     seletor = "".join(f'<a{" class=\"on\"" if l == lang else ""} href="{(up + ("" if l == "pt" else l + "/")) or "./"}">{l.upper()}</a>' for l in LANGS)
     alt = "".join(f'<link rel="alternate" hreflang="{"pt-BR" if l == "pt" else l}" href="{SITE}{"" if l == "pt" else l + "/"}">' for l in LANGS)
-    h, t, k = d["hero"], d["tese"], d["kit"]
+    h, t, g, r, tc, ex, k, f = d["hero"], d["tese"], d["gestor"], d["regra"], d["tecnico"], d["exemplo"], d["kit"], d["fim"]
+    fig = lambda src, altt, extra="": f'<figure class="ill"{extra}><img src="{a0}{src}" alt="{html.escape(altt)}" loading="lazy"></figure>'
     cards = "".join(f'<div class="card"><h3>{e} {esc(a)}</h3><p>{esc(b)}</p></div>' for e, a, b in t["cards"])
-    ideias = "".join(f"""<article class="ideia" id="{i['id']}">
-  <figure><img src="{a0}{i['img']}" alt="{html.escape(i['img_alt'])}" loading="lazy"></figure>
-  <div><span class="rot">{n + 1:02d} · {esc(i['nome']).upper()}</span><h3>{esc(i['titulo'])}</h3>
-  {''.join(f'<p>{esc(p)}</p>' for p in i['texto'])}
-  <p class="tip"><strong>{esc(d['faca'])}:</strong> {esc(i['faca'])}</p></div>
-</article>""" for n, i in enumerate(d["ideias"]))
-    b = d["bonus"]
+    sabe = "".join(f'<div class="mini"><span class="ic">{e}</span><b>{esc(a)}</b><span>{esc(b)}</span></div>' for e, a, b in g["sabe"])
+    partes = "".join(f"""<article class="ideia" id="{p['id']}">
+  {fig(p['img'], p['img_alt'])}
+  <div><div class="big"><span>{p['num']}</span>{esc(p['nome'])}</div><h3>{esc(p['titulo'])}</h3><p>{esc(p['texto'])}</p>
+  <ul class="lista">{''.join(f'<li>{esc(i)}</li>' for i in p['itens'])}</ul></div>
+</article>""" for p in r["partes"])
+    papeis = "".join(f'<div class="card papel"><h3>{e} {esc(a)}</h3><p>{esc(b)}</p><p class="usa">{esc(c)}</p></div>' for e, a, b, c in tc["papeis"])
+    passos = "".join(f'<li><b>{esc(a)}</b><span>{esc(b)}</span></li>' for a, b in ex["passos"])
+    modelos = "".join(f"""<div class="box"><span class="chip">{esc(m['quem'])}</span><h3>{esc(m['titulo'])}</h3><p>{esc(m['p'])}</p><pre id="m{n}">{esc(m['txt'])}</pre>
+      <button class="btn copy" data-alvo="m{n}">{esc(k['copiar'])}</button></div>""" for n, m in enumerate(k["modelos"]))
+    mais = "".join(f'<a class="card link" href="{u}" target="_blank" rel="noopener"><h3>{esc(a)} ↗</h3><p>{esc(b)}</p></a>' for a, b, u in k["mais"])
+    linhas = "".join(f'<tr><td>{esc(a)}</td><td>{esc(b)}</td></tr>' for a, b in f["linhas"])
     vid = ""
     if videos:
         v = d["video"]
@@ -91,8 +107,6 @@ def construir(lang, videos):
       <p><a href="{videos['reel']}">{esc(v['baixar'])}</a>{yt('yt_reel')}</p></div>
   </div>
 </div></section>"""
-    o, c = d["oport"], d["cola"]
-    itens = "".join(f"<li>{esc(x)}</li>" for x in c["itens"])
     corpo = f"""
 <header class="hero" id="top">
   <div class="glow"></div>
@@ -101,45 +115,46 @@ def construir(lang, videos):
       <span class="chip">{esc(h['chip'])}</span>
       <h1>{h['h1']}</h1>
       <p class="lead">{esc(h['lead'])}</p>
-      <div class="cta"><a class="btn" href="#ideias">{esc(h['cta1'])}</a><a class="btn ghost" href="{REPO}" target="_blank" rel="noopener">{esc(h['cta2'])}</a></div>
+      <div class="cta"><a class="btn" href="#regra">{esc(h['cta1'])}</a><a class="btn ghost" href="{REPO}" target="_blank" rel="noopener">{esc(h['cta2'])}</a></div>
     </div>
     <figure><img src="{a0}banner{sfx}.jpg" alt="{html.escape(h['alt'])}"></figure>
   </div>
 </header>
 <section id="resumo" class="resumo"><div class="wrap"><span class="chip">{esc(d['resumo_chip'])}</span><p>{esc(d['resumo'])}</p></div></section>
-<section id="tese"><div class="wrap">
+<section id="time"><div class="wrap">
   <span class="chip">{esc(t['chip'])}</span><h2>{esc(t['h2'])}</h2><p class="sub">{esc(t['sub'])}</p>
   <figure style="margin:0 0 26px;border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 80px -30px #000"><img src="{a0}banner-grade{sfx}.jpg" alt="{html.escape(t['alt_grade'])}" loading="lazy" style="width:100%;display:block"></figure>
   <div class="grid g3">{cards}</div>
 </div></section>
-<section id="ideias"><div class="wrap">
-  <span class="chip">{esc(d['ideias_chip'])}</span><h2>{esc(d['ideias_h2'])}</h2><p class="sub">{esc(d['ideias_sub'])}</p>
-  {ideias}
-  <div class="box" style="margin-top:20px"><div class="two" style="align-items:center">
-    <figure class="ill"><img src="{a0}{b['img']}" alt="{html.escape(b['img_alt'])}" loading="lazy"></figure>
-    <div><span class="chip">{esc(b['chip'])}</span><h3 style="font-size:1.25rem;margin:.3em 0">{esc(b['h3'])}</h3><p>{esc(b['texto'])}</p></div>
-  </div></div>
+<section id="gestor"><div class="wrap">
+  <span class="chip">{esc(g['chip'])}</span><h2>{esc(g['h2'])}</h2>
+  <div class="two" style="align-items:center;margin-top:18px">{fig(g['img'], g['img_alt'])}<div>{''.join(f'<p>{esc(x)}</p>' for x in g['texto'])}</div></div>
+  <h3 style="margin:28px 0 12px">{esc(g['sabe_h3'])}</h3><div class="minis">{sabe}</div>
+</div></section>
+<section id="regra"><div class="wrap">
+  <span class="chip">{esc(r['chip'])}</span><h2>{esc(r['h2'])}</h2><p class="sub">{esc(r['sub'])}</p>
+  {partes}
+</div></section>
+<section id="tecnico"><div class="wrap">
+  <span class="chip">{esc(tc['chip'])}</span><h2>{esc(tc['h2'])}</h2>
+  <div class="two" style="align-items:center;margin-top:18px">{fig(tc['img'], tc['img_alt'])}<p style="color:var(--txt);font-size:1.05rem">{esc(tc['texto'])}</p></div>
+  <div class="two" style="margin-top:26px;align-items:start">{fig(tc['img2'], tc['img2_alt'])}<div class="papeis">{papeis}</div></div>
+  <p class="tip" style="margin-top:22px">{esc(tc['prof'])} <a href="https://eventos.inema.pro/prof2030/" target="_blank" rel="noopener">{esc(tc['prof_link'])} ↗</a></p>
+</div></section>
+<section id="exemplo"><div class="wrap">
+  <span class="chip">{esc(ex['chip'])}</span><h2>{esc(ex['h2'])}</h2><p class="sub">{esc(ex['sub'])}</p>
+  <div class="two" style="align-items:start">{fig(ex['img'], ex['img_alt'])}<ol class="passos">{passos}</ol></div>
 </div></section>
 <section id="kit"><div class="wrap">
   <span class="chip">{esc(k['chip'])}</span><h2>{esc(k['h2'])}</h2><p class="sub">{esc(k['sub'])}</p>
-  <div class="two">
-    <div class="box"><h3>{esc(k['entrevista_h3'])}</h3><p>{esc(k['entrevista_p'])}</p><pre id="p-entrevista">{esc(k['entrevista'])}</pre>
-      <button class="btn copy" data-alvo="p-entrevista">{esc(k['copiar'])}</button></div>
-    <div class="box"><h3>{esc(k['dic_h3'])}</h3><p>{esc(k['dic_p'])}</p><pre id="p-dic">{esc(k['dic'])}</pre>
-      <button class="btn copy" data-alvo="p-dic">{esc(k['copiar'])}</button></div>
-  </div>
-  <div class="ladder"><h3 style="margin:0 0 10px">{esc(k['escada_h3'])}</h3>{escada(k['escada'])}</div>
+  <div class="modelos">{modelos}</div>
+  <h3 style="margin:34px 0 12px">{esc(k['mais_h3'])}</h3><div class="grid g4">{mais}</div>
 </div></section>
 {vid}
-<section id="cola"><div class="wrap">
-  <span class="chip">{esc(o['chip'])}</span><h2>{esc(o['h2'])}</h2>
-  <div class="two" style="align-items:center;margin-bottom:40px">
-    <figure class="ill"><img src="{a0}{o['img']}" alt="{html.escape(o['img_alt'])}" loading="lazy"></figure>
-    <p style="color:var(--txt);font-size:1.05rem">{esc(o['texto'])}</p>
-  </div>
-  <span class="chip">{esc(c['chip'])}</span><h2>{esc(c['h2'])}</h2><p class="sub">{esc(c['sub'])}</p>
-  <ul class="check">{itens}</ul>
-  <p class="tip" style="margin-top:22px"><strong>{esc(c['frase'])}</strong></p>
+<section id="fim"><div class="wrap">
+  <span class="chip">{esc(f['chip'])}</span><h2>{esc(f['h2'])}</h2>
+  <div class="two" style="align-items:center;margin-top:18px">{fig(f['img'], f['img_alt'])}<div class="box"><table class="cola">{linhas}</table></div></div>
+  <p class="tip" style="margin-top:22px"><strong>{esc(f['frase'])}</strong></p>
 </div></section>
 """
     pagina = f"""<!DOCTYPE html>

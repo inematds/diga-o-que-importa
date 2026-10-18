@@ -6,8 +6,9 @@ mkdir -p media logs
 rm -f "media/$nome.png"
 ESTILO="Ilustração digital editorial sofisticada, estilo livro ilustrado moderno, traço limpo, cores sóbrias (azul-acinzentado, branco, \
 cinza-grafite, toques de verde-água). Luz de dia NEUTRA e fria-clara (nada de tom amarelado, dourado, sépia ou pôr do sol). \
-Personagens fixos em todas as cenas: um HOMEM de uns 40 anos, cabelo curto castanho, barba curta, camisa azul-clara de manga dobrada; \
-e um robô humanoide branco fosco estilo Tesla Optimus, liso, industrial, com cabeça preta lisa SEM rosto de tela, sem olhos desenhados, \
+Personagens fixos (use só os que a cena pedir, sempre iguais): o GESTOR, um HOMEM de uns 40 anos, cabelo curto castanho, barba curta, camisa azul-clara de manga dobrada; \
+a TÉCNICA de TI, uma MULHER de uns 35 anos, cabelo castanho preso, óculos de armação fina, camisa cinza-grafite; o DONO DA PADARIA, um HOMEM de uns 50 anos, cabelo grisalho curto, avental azul-marinho sobre camisa branca; \
+e o ROBÔ, humanoide branco fosco estilo Tesla Optimus, liso, industrial, com cabeça preta lisa SEM rosto de tela, sem olhos desenhados, \
 nada de robô fofo ou cartoon. Composição horizontal 16:9, assunto principal centralizado com respiro nas bordas."
 if [ -n "$texto" ]; then
   REGRA="Escreva DENTRO da arte, grande, legível, em letras brancas com uma palavra em amarelo, com a grafia EXATA (português, com acentos), só este texto: $texto. Nenhum outro texto."

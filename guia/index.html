@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Diga o que importa — como trabalhar bem com agentes de IA</title>
-<meta name="description" content="Quem se comunica melhor tira mais dos agentes de IA. Seis ideias, um roteiro de entrevista e um dicionário de projeto para o agente entregar o que você queria. Grátis, do INEMA.CLUB.">
+<title>Diga o que importa — o gestor, o técnico e o agente</title>
+<meta name="description" content="O gestor já sabe o mais difícil: como o negócio funciona. Falta falar com o agente. A regra 5-4-3, os quatro novos papéis da TI e modelos prontos para copiar. Grátis, do INEMA.CLUB.">
 <link rel="alternate" hreflang="pt-BR" href="https://inematds.github.io/diga-o-que-importa/guia/"><link rel="alternate" hreflang="en" href="https://inematds.github.io/diga-o-que-importa/guia/en/"><link rel="alternate" hreflang="es" href="https://inematds.github.io/diga-o-que-importa/guia/es/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -130,6 +130,23 @@
   @media(max-width:700px){ul.check{grid-template-columns:1fr}}
   ul.check li{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px 14px 46px;position:relative}
   ul.check li::before{content:"";position:absolute;left:16px;top:16px;width:18px;height:18px;border:2px solid var(--amb);border-radius:5px}
+  .ill{margin:0;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+  .big{font-family:Sora;font-weight:800;color:var(--amb);font-size:1.1rem;letter-spacing:.06em;text-transform:uppercase;display:flex;align-items:baseline;gap:10px}
+  .big span{font-size:3.4rem;line-height:1}
+  ul.lista{margin:.4em 0 0;padding-left:1.2em} ul.lista li{margin:.35em 0}
+  .minis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px} @media(max-width:820px){.minis{grid-template-columns:1fr 1fr}}
+  .mini{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:4px}
+  .mini .ic{font-size:1.4rem} .mini span:last-child{color:var(--mut);font-size:.9rem}
+  .papeis{display:grid;grid-template-columns:1fr 1fr;gap:12px} @media(max-width:600px){.papeis{grid-template-columns:1fr}}
+  .papel h3{font-size:1.02rem} .papel p{font-size:.92rem} .papel .usa{color:var(--amb);font-size:.85rem;margin-top:.4em}
+  ol.passos{list-style:none;counter-reset:p;padding:0;margin:0;display:grid;gap:12px}
+  ol.passos li{counter-increment:p;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px 12px 54px;position:relative;display:flex;flex-direction:column;gap:3px}
+  ol.passos li::before{content:counter(p);position:absolute;left:14px;top:12px;width:28px;height:28px;border-radius:50%;background:var(--amb);color:#1a1206;font:800 .95rem/28px Sora;text-align:center}
+  ol.passos li span{color:var(--mut);font-size:.92rem}
+  .modelos{display:grid;grid-template-columns:1fr 1fr;gap:18px} @media(max-width:820px){.modelos{grid-template-columns:1fr}}
+  .grid.g4{grid-template-columns:repeat(4,1fr)} @media(max-width:900px){.grid.g4{grid-template-columns:1fr 1fr}} @media(max-width:540px){.grid.g4{grid-template-columns:1fr}}
+  a.card.link{color:var(--txt)} a.card.link:hover{border-color:var(--amb)}
+  table.cola{width:100%;border-collapse:collapse} table.cola td{padding:12px;border-bottom:1px solid var(--line)} table.cola td:first-child{font-family:Sora;font-weight:800;color:var(--amb);white-space:nowrap}
 </style>
 </head>
 <body>
@@ -142,7 +159,7 @@
     <a class="pro" href="https://inema.pro" target="_blank" rel="noopener">PRO</a>
   </span>
   <div class="links">
-    <a class="sec" href="#tese">A tese</a><a class="sec" href="#ideias">6 ideias</a><a class="sec" href="#kit">Kit</a><a class="sec" href="#cola">Checklist</a>
+    <a class="sec" href="#gestor">Gestor</a><a class="sec" href="#regra">Regra 5-4-3</a><a class="sec" href="#tecnico">Técnico</a><a class="sec" href="#kit">Kit</a>
     <span class="lang"><a class="on" href="./">PT</a><a href="en/">EN</a><a href="es/">ES</a></span>
     <button class="tgl" id="themeToggle" aria-label="Alternar tema" title="Alternar tema">🌙</button>
     <a class="btn" href="https://github.com/inematds/diga-o-que-importa" target="_blank" rel="noopener">GitHub</a>
@@ -153,98 +170,108 @@
   <div class="glow"></div>
   <div class="wrap">
     <div>
-      <span class="chip">Agentes de IA · sem ser programador</span>
+      <span class="chip">Agentes de IA · para gestores e para a TI</span>
       <h1>Diga o que <span class="amb">importa</span></h1>
-      <p class="lead">O agente mais inteligente do mundo ainda não lê a sua mente. Quem se comunica melhor tira mais dele.</p>
-      <div class="cta"><a class="btn" href="#ideias">Ver as 6 ideias</a><a class="btn ghost" href="https://github.com/inematds/diga-o-que-importa" target="_blank" rel="noopener">Ver no GitHub</a></div>
+      <p class="lead">Você, gestor, já sabe o mais difícil: como o seu negócio funciona. Falta só aprender a falar com o agente.</p>
+      <div class="cta"><a class="btn" href="#regra">Começar pela regra 5-4-3</a><a class="btn ghost" href="https://github.com/inematds/diga-o-que-importa" target="_blank" rel="noopener">Ver no GitHub</a></div>
     </div>
-    <figure><img src="assets/banner.jpg" alt="Banner: Diga o que importa — quem se comunica melhor tira mais dos agentes de IA"></figure>
+    <figure><img src="assets/banner.jpg" alt="Banner: Diga o que importa — o gestor já sabe o mais difícil, falta falar com o agente"></figure>
   </div>
 </header>
-<section id="resumo" class="resumo"><div class="wrap"><span class="chip">Em resumo</span><p>Este é um guia grátis sobre como trabalhar bem com agentes de IA, os assistentes que escrevem, programam e organizam tarefas por você. A ideia central é simples: o agente não sabe o que você quer até você dizer, e quem se comunica melhor recebe resultados melhores. Aqui você encontra seis ideias práticas, um roteiro pronto para o agente te entrevistar antes de começar, um modelo de dicionário do projeto e um checklist. Serve para quem programa e para quem não programa. É só ler e aplicar no próximo pedido.</p></div></section>
-<section id="tese"><div class="wrap">
-  <span class="chip">A tese</span><h2>O gargalo não é o modelo. É a conversa.</h2><p class="sub">Os modelos melhoram a cada mês, mas a distância entre o que você pensa e o que você diz continua. É nessa distância que o agente inventa.</p>
-  <figure style="margin:0 0 26px;border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 80px -30px #000"><img src="assets/banner-grade.jpg" alt="Banner em grade com as 6 ideias: a barreira, o ambiente, a entrevista, uma língua só, base boa e a escada da confiança" loading="lazy" style="width:100%;display:block"></figure>
-  <div class="grid g3"><div class="card"><h3>🗣️ Comunicação é a habilidade</h3><p>Quem escreve com clareza, explica o porquê e descreve bem o que deu errado tira resultados muito melhores.</p></div><div class="card"><h3>🏠 O ambiente manda</h3><p>Agente num projeto bagunçado produz bagunça. Agente num projeto cuidado produz trabalho bom.</p></div><div class="card"><h3>🪜 Confiança se constrói</h3><p>Comece pelo freio: observe, dê tarefas fáceis de conferir e só depois solte mais.</p></div></div>
+<section id="resumo" class="resumo"><div class="wrap"><span class="chip">Em resumo</span><p>Este é um guia grátis para quem quer colocar agentes de IA para trabalhar numa empresa. A ideia central: o gestor já conhece os processos, os clientes, os fornecedores e a equipe, que é a parte mais difícil, e só precisa aprender a passar isso ao agente. Para isso existe a regra 5-4-3: cinco perguntas, quatro níveis de autonomia e três casos de teste. O guia também mostra como o técnico de TI muda de papel, de quem constrói para mentor, auditor, treinador e consultor. Tem modelos prontos para copiar e não precisa programar.</p></div></section>
+<section id="time"><div class="wrap">
+  <span class="chip">O time</span><h2>Três papéis, um time</h2><p class="sub">O agente faz rápido. O que ele não tem é o contexto do negócio e alguém que confira o trabalho. É aí que entram o gestor e o técnico.</p>
+  <figure style="margin:0 0 26px;border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 80px -30px #000"><img src="assets/banner-grade.jpg" alt="Banner em grade: o gestor, 5 perguntas, 4 níveis, 3 casos, o técnico, 4 papéis" loading="lazy" style="width:100%;display:block"></figure>
+  <div class="grid g3"><div class="card"><h3>🧭 O gestor diz o quê e por quê</h3><p>Conhece o processo, o cliente, o fornecedor e a equipe. Passa isso ao agente com clareza.</p></div><div class="card"><h3>🛠️ O técnico garante o como</h3><p>Transforma o pedido em instrução, testa, procura risco e prova que funciona.</p></div><div class="card"><h3>🤖 O agente executa</h3><p>Trabalha no nível de autonomia combinado e chama uma pessoa quando sai do combinado.</p></div></div>
 </div></section>
-<section id="ideias"><div class="wrap">
-  <span class="chip">6 ideias</span><h2>Seis ideias para o agente entregar o que você queria</h2><p class="sub">Cada ideia tem o porquê, um desenho e uma coisa para fazer ainda hoje.</p>
-  <article class="ideia" id="barreira">
-  <figure><img src="assets/02-barreira.jpg" alt="Homem e robô separados por um vidro: na cabeça do homem uma casa completa, na do robô uma casa torta" loading="lazy"></figure>
-  <div><span class="rot">01 · A BARREIRA</span><h3>O agente não lê a sua mente</h3>
-  <p>Entre você e o agente existe uma barreira de comunicação. Não importa o quanto o modelo seja inteligente: ele não sabe o que você valoriza, quais são as suas regras nem por que você quer aquilo.</p><p>O que você não diz, ele preenche sozinho. Às vezes acerta. Muitas vezes inventa. E como você não mencionou, ele conclui que não era importante.</p>
-  <p class="tip"><strong>Faça hoje:</strong> No próximo pedido, escreva uma linha com o que importa e outra com o porquê. Exemplo: "Precisa ser rápido no celular, porque meus clientes acessam pelo 4G."</p></div>
-</article><article class="ideia" id="ambiente">
-  <figure><img src="assets/03-ambiente.jpg" alt="Mesmo robô em duas oficinas: na bagunçada monta algo torto, na organizada monta algo perfeito" loading="lazy"></figure>
-  <div><span class="rot">02 · O AMBIENTE</span><h3>Casa bagunçada, trabalho bagunçado</h3>
-  <p>O agente trabalha dentro do seu projeto. Se o projeto é uma bagunça que ninguém cuida, entra lixo e sai lixo. Se é organizado, com testes e verificações, ele acerta mais.</p><p>Pense assim: se você tivesse cem pessoas trabalhando para você, como faria a pior delas trabalhar bem? Com regras claras, testes que pegam erro e um lugar arrumado. Isso sobe o piso. Para o agente vale o mesmo.</p>
-  <p class="tip"><strong>Faça hoje:</strong> Escolha uma coisa para arrumar no seu projeto: um arquivo de instruções para o agente, um teste que pega o erro mais comum ou uma pasta organizada.</p></div>
-</article><article class="ideia" id="entrevista">
-  <figure><img src="assets/04-entrevista.jpg" alt="Robô com prancheta entrevistando o homem numa mesa de reunião" loading="lazy"></figure>
-  <div><span class="rot">03 · A ENTREVISTA</span><h3>Deixe o agente te entrevistar</h3>
-  <p>O maior perigo é o que você nem sabe que não sabe: segurança, como o sistema vai pro ar, quem vai usar, o que acontece quando dá errado. Se você não fala, o agente decide por você.</p><p>A saída é inverter a conversa. Antes de construir, peça para o agente te entrevistar, uma pergunta por vez, até não sobrar dúvida. Você tira tudo da cabeça e ele para de adivinhar. O roteiro pronto está no kit, mais abaixo.</p>
-  <p class="tip"><strong>Faça hoje:</strong> Cole o roteiro de entrevista do kit antes do seu próximo projeto e responda tudo, mesmo o que parecer óbvio.</p></div>
-</article><article class="ideia" id="lingua">
-  <figure><img src="assets/05-lingua.jpg" alt="Cliente, homem, robô, monitor e celular segurando a mesma caixa de pedido, ligados por uma fita" loading="lazy"></figure>
-  <div><span class="rot">04 · UMA LÍNGUA SÓ</span><h3>A mesma palavra em todo lugar</h3>
-  <p>Se o cliente fala "pedido", você fala "pedido", o agente escreve "pedido" no código e a tela mostra "pedido", todo mundo está falando da mesma coisa. Quando cada um usa um nome (pedido, ordem, compra, venda), nasce a confusão.</p><p>Monte um pequeno dicionário do projeto: cada termo, o que ele significa e o que ele NÃO é. Entregue ao agente e atualize sempre que surgir palavra nova. Pensamento claro vira produto claro.</p>
-  <p class="tip"><strong>Faça hoje:</strong> Escreva as cinco palavras mais importantes do seu projeto com uma frase cada. Use o modelo do kit.</p></div>
-</article><article class="ideia" id="base">
-  <figure><img src="assets/06-base.jpg" alt="Pilha enorme de documentos caindo sobre uma maquete quebrada, ao lado de uma maquete modular bem encaixada" loading="lazy"></figure>
-  <div><span class="rot">05 · BASE BOA</span><h3>Documento gigante não salva projeto ruim</h3>
-  <p>Tem gente que tenta trocar o código por uma especificação enorme e passa a cuidar só do documento. O que costuma acontecer é o código ir piorando aos poucos, e o agente piora junto, porque ele trabalha dentro do código, não do documento.</p><p>Bom projeto é aquele em que mudar uma coisa não quebra outra. E ajuda muito quando o agente consegue abrir o sistema, clicar, tirar print e ver o resultado com os próprios olhos, em vez de imaginar.</p>
-  <p class="tip"><strong>Faça hoje:</strong> Pergunte ao agente: "o que neste projeto torna difícil fazer mudanças?" e resolva o primeiro item da lista.</p></div>
-</article><article class="ideia" id="escada">
-  <figure><img src="assets/07-escada.jpg" alt="Homem e robô subindo uma escada de cinco degraus, com um pedal de freio no primeiro degrau" loading="lazy"></figure>
-  <div><span class="rot">06 · A ESCADA</span><h3>Primeiro o freio, depois o acelerador</h3>
-  <p>Quando você aprende a dirigir, o primeiro pedal é o freio. Com agente é igual: não confie de olhos fechados na primeira vez que funciona. Esse desconfiar é bom.</p><p>Comece observando tudo o que ele faz. Dê tarefas chatas e fáceis de conferir: rascunhar respostas, organizar listas, revisar textos. Quando a confiança vier, suba um degrau: dois agentes ao mesmo tempo, habilidades próprias, conexão com e-mail e agenda.</p>
-  <p class="tip"><strong>Faça hoje:</strong> Liste três tarefas chatas da sua semana que dá para conferir em dois minutos. Comece por elas.</p></div>
+<section id="gestor"><div class="wrap">
+  <span class="chip">O gestor</span><h2>Você já sabe o mais difícil</h2>
+  <div class="two" style="align-items:center;margin-top:18px"><figure class="ill"><img src="assets/02-gestor-sabe.jpg" alt="Gestor cercado por ícones de processos, clientes, fornecedores e equipe, com um robô ao lado esperando instruções" loading="lazy"></figure><div><p>Pense no que você carrega na cabeça: como cada processo funciona, do que o cliente reclama, qual fornecedor atrasa, quem da equipe resolve o quê. Nenhum modelo de IA sabe isso. Esse conhecimento é seu.</p><p>O agente tem a capacidade, mas não tem o contexto. Ninguém de fora entrega esse contexto melhor do que você. O que falta não é aprender a programar. É aprender a falar com o agente, do mesmo jeito que você já fala com um funcionário novo.</p></div></div>
+  <h3 style="margin:28px 0 12px">O que só você sabe</h3><div class="minis"><div class="mini"><span class="ic">⚙️</span><b>Processos</b><span>como cada coisa é feita e por quê</span></div><div class="mini"><span class="ic">🙋</span><b>Clientes</b><span>o que pedem, do que reclamam</span></div><div class="mini"><span class="ic">🚚</span><b>Fornecedores</b><span>quem entrega, quem atrasa</span></div><div class="mini"><span class="ic">👥</span><b>Equipe</b><span>quem resolve o quê</span></div></div>
+</div></section>
+<section id="regra"><div class="wrap">
+  <span class="chip">Regra 5-4-3</span><h2>Cinco perguntas, quatro níveis, três casos</h2><p class="sub">Um jeito fácil de lembrar como passar o seu negócio para o agente. Os modelos para copiar estão no kit.</p>
+  <article class="ideia" id="cinco">
+  <figure class="ill"><img src="assets/03-funcionario-novo.jpg" alt="Gestor dando boas-vindas a um robô como funcionário novo, com crachá e pasta de integração" loading="lazy"></figure>
+  <div><div class="big"><span>5</span>perguntas</div><h3>Integre o agente como um funcionário novo</h3><p>Antes de pedir qualquer tarefa, responda por escrito as mesmas perguntas que você responderia para alguém que começou hoje. Depois troque a palavra pessoa por agente: é a mesma lista.</p>
+  <ul class="lista"><li>Qual é o objetivo da tarefa?</li><li>Que contexto e que informações são necessárias?</li><li>Que ferramentas podem ser usadas?</li><li>O que pode ser feito sozinho, e o que precisa da sua aprovação?</li><li>Como você vai saber se ficou bom?</li></ul></div>
+</article><article class="ideia" id="quatro">
+  <figure class="ill"><img src="assets/04-autonomia.jpg" alt="Gestor ajustando um painel com quatro alavancas, do vermelho ao verde" loading="lazy"></figure>
+  <div><div class="big"><span>4</span>níveis</div><h3>Decida quanto ele pode fazer sozinho</h3><p>Cada ação ganha um nível. Quanto maior o impacto da ação, mais você participa.</p>
+  <ul class="lista"><li>0 · não toca — encaminha para uma pessoa (ex.: cancelar contrato)</li><li>1 · propõe — prepara e espera a sua aprovação (ex.: reembolso)</li><li>2 · faz e avisa — executa e avisa o responsável (ex.: remarcar horário)</li><li>3 · faz sozinho — executa e registra (ex.: responder dúvida frequente)</li></ul></div>
+</article><article class="ideia" id="tres">
+  <figure class="ill"><img src="assets/05-tres-casos.jpg" alt="Técnica observando o robô diante de três caixas: uma simples, uma complicada e uma estranha" loading="lazy"></figure>
+  <div><div class="big"><span>3</span>casos</div><h3>Teste antes de confiar</h3><p>Antes de colocar o agente para trabalhar, rode três casos. Acertou os três, ele começa. Errou, você ajusta a ficha e testa de novo.</p>
+  <ul class="lista"><li>Comum: o caso do dia a dia</li><li>Difícil: o que pede julgamento</li><li>Exceção: o que quase nunca acontece</li></ul></div>
 </article>
-  <div class="box" style="margin-top:20px"><div class="two" style="align-items:center">
-    <figure class="ill"><img src="assets/08-piso.jpg" alt="Robô trabalhando numa plataforma com rede de segurança por baixo enquanto o homem toma café" loading="lazy"></figure>
-    <div><span class="chip">Bônus</span><h3 style="font-size:1.25rem;margin:.3em 0">Piso alto, esforço menor</h3><p>Quando o ambiente está bom e os testes pegam o que escapa, você não precisa ligar o esforço máximo do modelo. O esforço médio resolve, gasta menos e responde mais rápido. Antes de correr atrás do modelo mais novo, melhore o lugar onde o agente trabalha: é ali que está o maior ganho.</p></div>
-  </div></div>
+</div></section>
+<section id="tecnico"><div class="wrap">
+  <span class="chip">O técnico</span><h2>De quem constrói para quem forma</h2>
+  <div class="two" style="align-items:center;margin-top:18px"><figure class="ill"><img src="assets/06-tecnico-muda.jpg" alt="À esquerda a técnica programando sozinha; à direita a mesma técnica orientando pessoas e um robô" loading="lazy"></figure><p style="color:var(--txt);font-size:1.05rem">O técnico de TI passou anos construindo sistemas. Hoje o agente constrói rápido. O valor do técnico muda de lugar: ele deixa de ser quem constrói e passa a ser quem forma, quem confere e quem orienta.</p></div>
+  <div class="two" style="margin-top:26px;align-items:start"><figure class="ill"><img src="assets/07-quatro-papeis.jpg" alt="A mesma técnica em quatro papéis: mentora, auditora, treinadora e consultora" loading="lazy"></figure><div class="papeis"><div class="card papel"><h3>🤝 Mentor</h3><p>Senta com o gestor e ajuda a transformar o processo em instrução, do primeiro rascunho até a validação.</p><p class="usa">Usa: ficha das 5 perguntas</p></div><div class="card papel"><h3>🔎 Auditor</h3><p>Testa, procura o risco e mostra a evidência. Entrega um relatório curto com o que fazer agora, em 7 e em 30 dias.</p><p class="usa">Usa: ensaio dos 3 casos e relatório</p></div><div class="card papel"><h3>🎓 Treinador</h3><p>Prepara a equipe e os agentes com casos reais da empresa, até cada um acertar sem ajuda.</p><p class="usa">Usa: os 3 casos como exercício</p></div><div class="card papel"><h3>🗺️ Consultor</h3><p>Mapeia os processos e decide onde o agente entra, e onde nem precisa de IA.</p><p class="usa">Usa: mapa de seis elos</p></div></div></div>
+  <p class="tip" style="margin-top:22px">Esses quatro papéis são as quatro formações do Profissional 2030 do INEMA. <a href="https://eventos.inema.pro/prof2030/" target="_blank" rel="noopener">Conhecer o Profissional 2030 ↗</a></p>
+</div></section>
+<section id="exemplo"><div class="wrap">
+  <span class="chip">Exemplo</span><h2>Gestor e técnico numa padaria</h2><p class="sub">O dono quer um agente que responda as encomendas no WhatsApp.</p>
+  <div class="two" style="align-items:start"><figure class="ill"><img src="assets/08-padaria.jpg" alt="Dono da padaria conversando com a técnica de TI enquanto o robô responde encomendas no celular" loading="lazy"></figure><ol class="passos"><li><b>O dono responde as 5 perguntas</b><span>Objetivo: anotar encomendas. Contexto: cardápio, preços, horários de forno. Aprovação: desconto e pedido grande.</span></li><li><b>Define os níveis</b><span>Responder cardápio: 3. Confirmar encomenda: 2. Dar desconto: 1. Cancelar pedido já pago: 0.</span></li><li><b>O técnico, como mentor, escreve a instrução</b><span>Junta as respostas numa ficha que o agente lê sempre.</span></li><li><b>O técnico, como auditor, testa os 3 casos</b><span>Comum: 20 pães para amanhã. Difícil: desconto numa encomenda grande. Exceção: bolo para daqui a uma hora.</span></li><li><b>O agente começa</b><span>Com o nível de cada ação definido e uma pessoa chamada quando sai do combinado.</span></li></ol></div>
 </div></section>
 <section id="kit"><div class="wrap">
-  <span class="chip">Kit</span><h2>Copie e use</h2><p class="sub">Dois textos prontos para colar no agente e uma escada para medir onde você está.</p>
-  <div class="two">
-    <div class="box"><h3>Roteiro: o agente te entrevista</h3><p>Cole antes de pedir qualquer coisa nova. Funciona em qualquer agente.</p><pre id="p-entrevista">Antes de começar, me entreviste sobre o que eu quero construir.
-Faça UMA pergunta por vez e espere a minha resposta.
-Pergunte sobre: para quem é, o que precisa fazer, o que NÃO pode acontecer,
-segurança e dados, como vai para o ar, como vamos saber que ficou bom.
-Quando eu não souber, me dê as opções com prós e contras e recomende uma.
-Só pare quando não sobrar dúvida. No fim, resuma tudo em tópicos
-e me peça para confirmar antes de escrever qualquer coisa.</pre>
-      <button class="btn copy" data-alvo="p-entrevista">Copiar</button></div>
-    <div class="box"><h3>Modelo: dicionário do projeto</h3><p>Salve num arquivo do projeto (por exemplo DICIONARIO.md) e peça ao agente para seguir.</p><pre id="p-dic"># Dicionário do projeto
-Use estas palavras sempre, no código, na tela e na conversa.
+  <span class="chip">Kit</span><h2>Copie e use</h2><p class="sub">Cinco modelos prontos. Os dois primeiros são do gestor; os outros três, do técnico.</p>
+  <div class="modelos"><div class="box"><span class="chip">Gestor</span><h3>Ficha do agente (5 perguntas)</h3><p>Responda e cole no começo da conversa com o agente.</p><pre id="m0"># Ficha do agente: &lt;nome da tarefa&gt;
+(Troque a palavra pessoa por agente: são as perguntas de um funcionário novo.)
 
-## Pedido
-O que é: a compra que o cliente confirmou, com itens e endereço.
-O que NÃO é: carrinho (ainda não confirmado).
+1. Qual é o objetivo da tarefa?
+2. Que contexto e que informações são necessárias?
+3. Que ferramentas podem ser usadas?
+4. O que pode ser feito sozinho, e o que precisa da minha aprovação?
+5. Como vou saber se ficou bom?
 
-## Cliente
-O que é: a pessoa que compra.
-O que NÃO é: usuário do painel (esse é "atendente").</pre>
-      <button class="btn copy" data-alvo="p-dic">Copiar</button></div>
-  </div>
-  <div class="ladder"><h3 style="margin:0 0 10px">A escada da confiança</h3><div class="steps"><div class="d" style="--i:0;min-height:110px;animation-delay:0.0s;background:rgba(250,204,21,0.06)"><b>1</b><span>Observar tudo o que ele faz</span></div><div class="d" style="--i:1;min-height:155px;animation-delay:0.3s;background:rgba(250,204,21,0.12)"><b>2</b><span>Tarefas chatas e fáceis de conferir</span></div><div class="d" style="--i:2;min-height:200px;animation-delay:0.6s;background:rgba(250,204,21,0.18)"><b>3</b><span>Dois agentes ao mesmo tempo</span></div><div class="d" style="--i:3;min-height:245px;animation-delay:0.9s;background:rgba(250,204,21,0.24)"><b>4</b><span>Habilidades próprias</span></div><div class="d" style="--i:4;min-height:290px;animation-delay:1.2s;background:rgba(250,204,21,0.30)"><b>5</b><span>Conexões: e-mail, agenda, planilhas</span></div></div></div>
+Regra: se faltar informação, não suponha. Pare e me pergunte.</pre>
+      <button class="btn copy" data-alvo="m0">Copiar</button></div><div class="box"><span class="chip">Gestor</span><h3>Tabela de autonomia (4 níveis)</h3><p>Uma linha por ação. Na dúvida, escolha o nível mais baixo.</p><pre id="m1">| Ação | Nível | Significa |
+|---|---|---|
+| Responder dúvida frequente | 3 · faz sozinho | executa e registra |
+| Remarcar horário | 2 · faz e avisa | executa e avisa o responsável |
+| Reembolso | 1 · propõe | prepara e espera aprovação |
+| Cancelar contrato | 0 · não toca | encaminha para uma pessoa |
+
+Quanto maior o impacto da ação, mais uma pessoa participa.</pre>
+      <button class="btn copy" data-alvo="m1">Copiar</button></div><div class="box"><span class="chip">Técnico · auditor</span><h3>Ensaio dos 3 casos</h3><p>Cole no agente junto com a ficha. Use só dados fictícios.</p><pre id="m2">Vou colar a ficha de um agente da minha empresa. Faça o papel desse agente num ensaio.
+Para cada caso, diga o que você faria, em que nível de autonomia e com base em qual parte da ficha.
+Se faltar informação, NÃO suponha: pare e diga o que falta na ficha.
+
+Caso 1 (comum): &lt;o caso do dia a dia&gt;
+Caso 2 (difícil): &lt;o que pede julgamento&gt;
+Caso 3 (exceção): &lt;o que quase nunca acontece&gt;
+
+[cole a ficha aqui]</pre>
+      <button class="btn copy" data-alvo="m2">Copiar</button></div><div class="box"><span class="chip">Técnico · consultor</span><h3>Mapa de seis elos</h3><p>Preencha com o gestor para cada processo antes de decidir onde o agente entra.</p><pre id="m3">Processo: &lt;nome&gt;
+1. Entrada: o que chega e de onde
+2. Decisões: uma por linha, marque R (regra) ou J (julgamento)
+3. Ações: o que é feito
+4. Verificações: como se confere
+5. Exceções: o que foge do normal e quem decide
+6. Resultado: o que sai e para quem
+
+Dica: escreva do fim para o começo. Toda exceção termina numa pessoa.</pre>
+      <button class="btn copy" data-alvo="m3">Copiar</button></div><div class="box"><span class="chip">Técnico · auditor</span><h3>Relatório de uma página</h3><p>Para entregar ao gestor depois de testar os agentes.</p><pre id="m4">1. Resumo de uma página
+2. Inventário: quais agentes, o que fazem, quem responde por eles
+3. Riscos, impactos e evidências
+4. Recomendações: agora / 7 dias / 30 dias
+5. Limitações: o que não foi testado
+6. Proposta de acompanhamento (opcional)</pre>
+      <button class="btn copy" data-alvo="m4">Copiar</button></div></div>
+  <h3 style="margin:34px 0 12px">Para ir mais fundo no INEMA</h3><div class="grid g4"><a class="card link" href="https://inematds.github.io/constituicao-agentes/guia/" target="_blank" rel="noopener"><h3>Constituição dos agentes ↗</h3><p>as regras da casa e os casos difíceis, num modelo para preencher</p></a><a class="card link" href="https://inematds.github.io/kit-arquiteto-agentes/" target="_blank" rel="noopener"><h3>Kit do arquiteto de agentes ↗</h3><p>sete blocos que viram a especificação de um agente</p></a><a class="card link" href="https://inematds.github.io/gestor-de-agentes/videos/" target="_blank" rel="noopener"><h3>Gestão de agentes em vídeo ↗</h3><p>a série completa sobre gerir agentes como uma equipe</p></a><a class="card link" href="https://eventos.inema.pro/prof2030/" target="_blank" rel="noopener"><h3>Profissional 2030 ↗</h3><p>as formações de consultor, auditor, mentor e treinador</p></a></div>
 </div></section>
 
-<section id="cola"><div class="wrap">
-  <span class="chip">A oportunidade</span><h2>Onde está a oportunidade</h2>
-  <div class="two" style="align-items:center;margin-bottom:40px">
-    <figure class="ill"><img src="assets/09-oportunidade.jpg" alt="Homem apresentando um fluxo de trabalho para três empresários enquanto o robô executa as etapas" loading="lazy"></figure>
-    <p style="color:var(--txt);font-size:1.05rem">Programação foi o primeiro trabalho a mudar porque código é fácil de conferir. O trabalho do dia a dia é mais difícil: cada empresa faz as coisas de um jeito. Por isso a grande oportunidade é pegar os processos de trabalho, transformar em passos que um agente consegue seguir e levar isso para as empresas. Quem se comunica bem chega lá primeiro.</p>
-  </div>
-  <span class="chip">Checklist</span><h2>Antes do próximo pedido</h2><p class="sub">Seis perguntas rápidas. Se a resposta for não, você já sabe o que fazer.</p>
-  <ul class="check"><li>Eu disse o que importa e por quê?</li><li>O projeto está arrumado o bastante para o agente trabalhar bem?</li><li>Deixei o agente me entrevistar antes de começar?</li><li>Todo mundo usa as mesmas palavras para as mesmas coisas?</li><li>O agente consegue ver o resultado funcionando?</li><li>Estou no degrau certo da escada da confiança?</li></ul>
-  <p class="tip" style="margin-top:22px"><strong>Os modelos vão melhorar. Mas nunca vão ler a sua mente.</strong></p>
+<section id="fim"><div class="wrap">
+  <span class="chip">Para lembrar</span><h2>Cada um no seu papel</h2>
+  <div class="two" style="align-items:center;margin-top:18px"><figure class="ill"><img src="assets/09-dupla.jpg" alt="Gestor, técnica e robô lado a lado diante de um quadro com três colunas de ícones" loading="lazy"></figure><div class="box"><table class="cola"><tr><td>Gestor</td><td>diz o que importa, e por quê</td></tr><tr><td>Técnico</td><td>garante o como, e prova que funciona</td></tr><tr><td>Agente</td><td>executa no nível combinado</td></tr></table></div></div>
+  <p class="tip" style="margin-top:22px"><strong>Você não precisa aprender a programar. Precisa aprender a dizer o que importa.</strong></p>
 </div></section>
 
 <footer>
   <div class="wrap">
-    <div class="pill">Agentes de IA</div><div class="pill">Comunicação</div><div class="pill">Grátis</div>
+    <div class="pill">Agentes de IA</div><div class="pill">Gestão</div><div class="pill">Profissional 2030</div><div class="pill">Grátis</div>
     <p style="margin-top:18px">Diga o que importa · guia aberto e gratuito · <a href="https://github.com/inematds/diga-o-que-importa">inematds/diga-o-que-importa</a> · <a href="https://inema.club">INEMA.CLUB</a></p>
   </div>
 </footer>
